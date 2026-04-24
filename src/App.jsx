@@ -27,7 +27,7 @@ function App() {
     return (
       <div className="min-h-screen bg-gray-900 text-white p-4">
         <header className="text-center py-10">
-          <h1 className="text-4xl font-bold mb-2">🏎️ Luxury Dealer: 350 Vehículos</h1>
+          <h1 className="text-4xl font-bold mb-2">6R7 CARS: 350 Vehículos</h1>
           <p className="text-gray-400">Selecciona tu próximo auto de lujo</p>
         </header>
 
