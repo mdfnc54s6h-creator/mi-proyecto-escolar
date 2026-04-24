@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { generarAutos } from './autos';
 import { X, ArrowLeft, Fuel, Gauge, ShieldCheck, Zap, Timer, Activity } from 'lucide-react';
 
@@ -8,6 +8,15 @@ function App() {
   const [vista, setVista] = useState('catalogo'); 
   const [autoSeleccionado, setAutoSeleccionado] = useState(null);
   const [mostrarDetalles, setMostrarDetalles] = useState(false);
+
+  // Bloquea el scroll del fondo solo cuando el modal está abierto
+  useEffect(() => {
+    if (mostrarDetalles) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [mostrarDetalles]);
 
   const verDetalles = (auto) => {
     setAutoSeleccionado(auto);
@@ -52,46 +61,50 @@ function App() {
         </div>
 
         {mostrarDetalles && autoSeleccionado && (
-          /* FIX: overflow-y-auto y items-start para permitir scroll */
-          <div className="fixed inset-0 z-50 flex items-start justify-center p-4 bg-black/98 backdrop-blur-3xl overflow-y-auto">
-            <div className="bg-[#0a0a0a] border border-white/10 w-full max-w-5xl rounded-[3rem] overflow-hidden flex flex-col md:flex-row shadow-[0_0_80px_rgba(255,255,255,0.05)] my-10">
-              <div className="w-full md:w-3/5 h-[400px] md:h-[600px] relative">
-                <img src={autoSeleccionado.image} className="w-full h-full object-cover" alt="detail" />
-                <button onClick={() => setMostrarDetalles(false)} className="absolute top-8 left-8 bg-black/60 p-4 rounded-full text-white hover:bg-white hover:text-black transition-all border border-white/10">
+          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/95 backdrop-blur-xl">
+            <div className="min-h-screen flex items-center justify-center p-4 md:p-10">
+              <div className="bg-[#0a0a0a] border border-white/10 w-full max-w-6xl rounded-[3rem] overflow-hidden flex flex-col md:flex-row shadow-[0_0_80px_rgba(255,255,255,0.05)] relative">
+                
+                <button onClick={() => setMostrarDetalles(false)} className="absolute top-6 right-6 z-50 bg-black/60 p-4 rounded-full text-white hover:bg-white hover:text-black transition-all border border-white/10">
                   <X size={24} />
                 </button>
-              </div>
-              <div className="w-full md:w-2/5 p-12 flex flex-col justify-center bg-[#0d0d0d]">
-                <h2 className="text-5xl font-light tracking-tighter mb-4">{autoSeleccionado.make}</h2>
-                <div className="h-1 w-20 bg-amber-500 mb-8"></div>
-                
-                <p className="text-neutral-400 italic text-lg leading-relaxed mb-8">"{autoSeleccionado.description}"</p>
-                
-                <div className="grid grid-cols-2 gap-6 mb-10">
-                  <div className="border-l border-white/5 pl-4">
-                    <p className="text-[9px] uppercase text-neutral-500 tracking-widest flex items-center gap-2"><Zap size={12}/> Potencia</p>
-                    <p className="text-sm font-bold text-neutral-200">{autoSeleccionado.hp || '394'} HP</p>
-                  </div>
-                  <div className="border-l border-white/5 pl-4">
-                    <p className="text-[9px] uppercase text-neutral-500 tracking-widest flex items-center gap-2"><Timer size={12}/> 0-100 km/h</p>
-                    <p className="text-sm font-bold text-neutral-200">{autoSeleccionado.accel || '4.1'}s</p>
-                  </div>
-                  <div className="border-l border-white/5 pl-4">
-                    <p className="text-[9px] uppercase text-neutral-500 tracking-widest flex items-center gap-2"><Fuel size={12}/> Motor</p>
-                    <p className="text-sm font-bold text-neutral-200">{autoSeleccionado.fuel_type}</p>
-                  </div>
-                  <div className="border-l border-white/5 pl-4">
-                    <p className="text-[9px] uppercase text-neutral-500 tracking-widest flex items-center gap-2"><Activity size={12}/> Recorrido</p>
-                    <p className="text-sm font-bold text-neutral-200">{autoSeleccionado.mileage.toLocaleString()} KM</p>
-                  </div>
+
+                <div className="w-full md:w-3/5 h-[400px] md:h-auto relative">
+                  <img src={autoSeleccionado.image} className="w-full h-full object-cover" alt="detail" />
                 </div>
 
-                <button 
-                  onClick={() => { setMostrarDetalles(false); setVista('formulario'); window.scrollTo(0,0); }}
-                  className="w-full bg-white text-black py-6 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] hover:bg-amber-600 hover:text-white transition-all shadow-2xl"
-                >
-                  contactar vendedor de 6r7 cars
-                </button>
+                <div className="w-full md:w-2/5 p-12 lg:p-16 flex flex-col justify-center bg-[#0d0d0d]">
+                  <h2 className="text-5xl font-light tracking-tighter mb-4">{autoSeleccionado.make}</h2>
+                  <div className="h-1 w-20 bg-amber-500 mb-8"></div>
+                  
+                  <p className="text-neutral-400 italic text-lg leading-relaxed mb-8">"{autoSeleccionado.description}"</p>
+                  
+                  <div className="grid grid-cols-2 gap-6 mb-10">
+                    <div className="border-l border-white/5 pl-4">
+                      <p className="text-[9px] uppercase text-neutral-500 tracking-widest flex items-center gap-2"><Zap size={12}/> Potencia</p>
+                      <p className="text-sm font-bold text-neutral-200">{autoSeleccionado.hp || '394'} HP</p>
+                    </div>
+                    <div className="border-l border-white/5 pl-4">
+                      <p className="text-[9px] uppercase text-neutral-500 tracking-widest flex items-center gap-2"><Timer size={12}/> 0-100 km/h</p>
+                      <p className="text-sm font-bold text-neutral-200">{autoSeleccionado.accel || '4.1'}s</p>
+                    </div>
+                    <div className="border-l border-white/5 pl-4">
+                      <p className="text-[9px] uppercase text-neutral-500 tracking-widest flex items-center gap-2"><Fuel size={12}/> Motor</p>
+                      <p className="text-sm font-bold text-neutral-200">{autoSeleccionado.fuel_type}</p>
+                    </div>
+                    <div className="border-l border-white/5 pl-4">
+                      <p className="text-[9px] uppercase text-neutral-500 tracking-widest flex items-center gap-2"><Activity size={12}/> Recorrido</p>
+                      <p className="text-sm font-bold text-neutral-200">{autoSeleccionado.mileage?.toLocaleString()} KM</p>
+                    </div>
+                  </div>
+
+                  <button 
+                    onClick={() => { setMostrarDetalles(false); setVista('formulario'); window.scrollTo(0,0); }}
+                    className="w-full bg-white text-black py-6 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] hover:bg-amber-600 hover:text-white transition-all shadow-2xl"
+                  >
+                    contactar vendedor de 6r7 cars
+                  </button>
+                </div>
               </div>
             </div>
           </div>
