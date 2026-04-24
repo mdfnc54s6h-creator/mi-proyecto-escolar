@@ -1,60 +1,39 @@
 export const generarAutos = () => {
-  const listaAutos = [
-    { id: 1, make: "Toyota Hilux", year: 2022, fuel_type: "Diesel", mileage: 25000, color: "Blanco", price: 42500, description: "Único dueño, nunca cargada, solo ciudad.", category: "Pickup" },
-    { id: 2, make: "Toyota Hilux", year: 2014, fuel_type: "Diesel", mileage: 185000, color: "Gris", price: 18900, description: "Motor al 100, detalles estéticos por el año.", category: "Pickup" },
-    { id: 3, make: "Ford Mustang GT", year: 2020, fuel_type: "Gasolina", mileage: 15000, color: "Rojo", price: 48000, description: "Motor V8, escapes modificados, ruge duro.", category: "Deportivo" },
-    { id: 4, make: "Honda Civic", year: 2018, fuel_type: "Gasolina", mileage: 65000, color: "Negro", price: 16500, description: "Económico, a mi nombre, traspaso inmediato.", category: "Sedán" },
-    { id: 5, make: "BMW Serie 7", year: 2021, fuel_type: "Gasolina", mileage: 12000, color: "Azul", price: 85000, description: "Versión ejecutiva, cámaras 360, impecable.", category: "Luxury" },
-    { id: 6, make: "Jeep Wrangler", year: 2019, fuel_type: "Gasolina", mileage: 40000, color: "Arena", price: 39000, description: "4x4 activo, suspensión levantada, listo cerro.", category: "SUV" },
-    { id: 7, make: "Audi TT", year: 2016, fuel_type: "Gasolina", mileage: 55000, color: "Plata", price: 22500, description: "Servicio recién hecho, llantas nuevas.", category: "Coupé" },
-    { id: 8, make: "Ferrari SF90", year: 2023, fuel_type: "Eléctrico/G", mileage: 500, color: "Rosso Corsa", price: 620000, description: "Híbrido enchufable, una joya, solo coleccionistas.", category: "Hyper" },
-    { id: 9, make: "Toyota Corolla", year: 2015, fuel_type: "Gasolina", mileage: 110000, color: "Blanco", price: 10500, description: "Aire congelando, nunca chocado, uso diario.", category: "Sedán" },
-    { id: 10, make: "Toyota RAV4", year: 2023, fuel_type: "Eléctrico", mileage: 8000, color: "Gris", price: 44000, description: "Híbrida, ahorro increíble, garantía de agencia.", category: "SUV" },
-    { id: 11, make: "Ford F-150", year: 2021, fuel_type: "Gasolina", mileage: 30000, color: "Negro", price: 45000, description: "Versión Lariat, cuero, techo panorámico.", category: "Pickup" },
-    { id: 12, make: "Mercedes-Benz Clase S", year: 2018, fuel_type: "Diesel", mileage: 60000, color: "Negro", price: 55000, description: "Importado, full extras, mantenimiento en taller oficial.", category: "Luxury" },
-    { id: 13, make: "Nissan 370Z", year: 2015, fuel_type: "Gasolina", mileage: 75000, color: "Blanco", price: 21000, description: "Standard, motor V6, jala muy bien.", category: "Deportivo" },
-    { id: 14, make: "Hyundai Elantra", year: 2017, fuel_type: "Gasolina", mileage: 88000, color: "Azul", price: 9200, description: "Precio negociable en persona, papeles en regla.", category: "Sedán" },
-    { id: 15, make: "Kia Sportage", year: 2022, fuel_type: "Gasolina", mileage: 20000, color: "Rojo", price: 31500, description: "Mandos al timón, pantalla CarPlay, como nueva.", category: "SUV" },
-    { id: 16, make: "BMW M4", year: 2021, fuel_type: "Gasolina", mileage: 18000, color: "Verde", price: 79000, description: "Pack Competition, fibra de carbono, un misil.", category: "Coupé" },
-    { id: 17, make: "Chevrolet Silverado", year: 2019, fuel_type: "Gasolina", mileage: 50000, color: "Azul", price: 32000, description: "Z71 Off-Road, rines especiales, bien cuidada.", category: "Pickup" },
-    { id: 18, make: "Porsche 918 Spyder", year: 2015, fuel_type: "Eléctrico/G", mileage: 1200, color: "Gris", price: 1500000, description: "Inversión segura, mantenimiento al día en Porsche.", category: "Hyper" },
-    { id: 19, make: "Tesla Model 3", year: 2021, fuel_type: "Eléctrico", mileage: 35000, color: "Blanco", price: 38000, description: "Autopilot activado, ahorro total en gasolina.", category: "Sedán" },
-    { id: 20, make: "Audi A8", year: 2020, fuel_type: "Gasolina", mileage: 25000, color: "Negro", price: 68000, description: "Masaje en asientos, sonido Bang & Olufsen.", category: "Luxury" },
-    { id: 21, make: "Honda CR-V", year: 2016, fuel_type: "Gasolina", mileage: 92000, color: "Tinto", price: 15800, description: "Familiar, espaciosa, cero fugas de aceite.", category: "SUV" },
-    { id: 22, make: "Mazda MX-5 Miata", year: 2022, fuel_type: "Gasolina", mileage: 5000, color: "Gris", price: 33000, description: "Convertible, super divertido, poco uso.", category: "Deportivo" },
-    { id: 23, make: "Nissan Frontier", year: 2018, fuel_type: "Diesel", mileage: 70000, color: "Naranja", price: 24500, description: "4x4, defensa reforzada, lista para trabajar.", category: "Pickup" },
-    { id: 24, make: "Volkswagen Jetta", year: 2019, fuel_type: "Gasolina", mileage: 48000, color: "Blanco", price: 14900, description: "Motor turbo, interiores en piel, muy cómodo.", category: "Sedán" },
-    { id: 25, make: "Chevrolet Camaro", year: 2017, fuel_type: "Gasolina", mileage: 60000, color: "Amarillo", price: 23500, description: "Look Bumblebee, automático, rines de 20\".", category: "Coupé" },
-    { id: 26, make: "Chevrolet Tahoe", year: 2023, fuel_type: "Gasolina", mileage: 10000, color: "Negro", price: 82000, description: "Blindada nivel 3, tres filas, máxima seguridad.", category: "SUV" },
-    { id: 27, make: "Lexus LS", year: 2019, fuel_type: "Eléctrico", mileage: 33000, color: "Perla", price: 52000, description: "Híbrido, ultra silencioso, lujo japonés.", category: "Luxury" },
-    { id: 28, make: "McLaren P1", year: 2014, fuel_type: "Eléctrico/G", mileage: 2500, color: "Naranja", price: 1800000, description: "El 'Santo Grial', edición limitada, impecable.", category: "Hyper" },
-    { id: 29, make: "Subaru WRX STI", year: 2018, fuel_type: "Gasolina", mileage: 45000, color: "Azul", price: 31000, description: "Tracción integral, motor bóxer, muy rápido.", category: "Deportivo" },
-    { id: 30, make: "Nissan Sentra", year: 2020, fuel_type: "Gasolina", mileage: 40000, color: "Gris", price: 13500, description: "Bolsas de aire intactas, llantas al 90%.", category: "Sedán" },
-    { id: 31, make: "Mazda CX-5", year: 2021, fuel_type: "Gasolina", mileage: 28000, color: "Rojo", price: 29000, description: "Diseño elegante, cámara de reversa, económica.", category: "SUV" },
-    { id: 32, make: "Toyota GR86", year: 2023, fuel_type: "Gasolina", mileage: 3000, color: "Blanco", price: 35500, description: "Reestrénalo, manual, drift machine.", category: "Coupé" },
-    { id: 33, make: "RAM 1500", year: 2020, fuel_type: "Gasolina", mileage: 55000, color: "Blanco", price: 37000, description: "Motor HEMI, sonido Alpine, muy potente.", category: "Pickup" },
-    { id: 34, make: "Range Rover Vogue", year: 2022, fuel_type: "Diesel", mileage: 15000, color: "Verde", price: 125000, description: "La reina de las SUV, suspensión de aire.", category: "Luxury" },
-    { id: 35, make: "Porsche 911 Carrera", year: 2021, fuel_type: "Gasolina", mileage: 8000, color: "Azul", price: 135000, description: "Un clásico moderno, PDK, techo de cristal.", category: "Deportivo" },
-    { id: 36, make: "Bugatti Chiron", year: 2022, fuel_type: "Gasolina", mileage: 300, color: "Azul/Negro", price: 3500000, description: "El más rápido del mundo, entrega inmediata.", category: "Hyper" },
-    { id: 37, make: "Toyota Camry", year: 2016, fuel_type: "Gasolina", mileage: 95000, color: "Plata", price: 12800, description: "Motor confiable para años, cero ruidos.", category: "Sedán" },
-    { id: 38, make: "Land Rover Defender", year: 2023, fuel_type: "Diesel", mileage: 4000, color: "Beige", price: 110000, description: "El mejor todoterreno, accesorios originales.", category: "SUV" },
-    { id: 39, make: "Infiniti Q60", year: 2018, fuel_type: "Gasolina", mileage: 42000, color: "Rojo", price: 27000, description: "Motor 3.0t, biturbo, estética deportiva.", category: "Coupé" },
-    { id: 40, make: "Ford Maverick", year: 2023, fuel_type: "Eléctrico", mileage: 5000, color: "Azul", price: 36000, description: "Híbrida, compacta, perfecta para ciudad.", category: "Pickup" },
-    { id: 41, make: "Bentley Continental", year: 2017, fuel_type: "Gasolina", mileage: 22000, color: "Negro", price: 145000, description: "Interior madera real, cuero hecho a mano.", category: "Luxury" },
-    { id: 42, make: "BMW M2", year: 2019, fuel_type: "Gasolina", mileage: 30000, color: "Blanco", price: 49500, description: "Compacto y agresivo, bien mantenido.", category: "Deportivo" },
-    { id: 43, make: "Kia Forte", year: 2022, fuel_type: "Gasolina", mileage: 15000, color: "Azul", price: 18000, description: "Aún con garantía de fábrica, muy moderno.", category: "Sedán" },
-    { id: 44, make: "Ford Explorer", year: 2017, fuel_type: "Gasolina", mileage: 85000, color: "Gris", price: 19500, description: "3 filas, ideal para viajes largos, AC doble.", category: "SUV" },
-    { id: 45, make: "Ford Mustang GT", year: 2015, fuel_type: "Gasolina", mileage: 80000, color: "Negro", price: 22000, description: "Manual, motor coyote, corre fuerte.", category: "Coupé" },
-    { id: 46, make: "Koenigsegg Jesko", year: 2024, fuel_type: "Gasolina", mileage: 50, color: "Blanco", price: 4000000, description: "Tecnología aeroespacial, 1600 HP.", category: "Hyper" },
-    { id: 47, make: "Toyota Hilux", year: 2020, fuel_type: "Diesel", mileage: 55000, color: "Blanco", price: 33000, description: "4x4, snorkel, lista para la montaña.", category: "Pickup" },
-    { id: 48, make: "Rolls-Royce Ghost", year: 2021, fuel_type: "Gasolina", mileage: 6000, color: "Negro", price: 320000, description: "Alfombras de lana, paraguas en puerta, único.", category: "Luxury" },
-    { id: 49, make: "Hyundai Tucson", year: 2019, fuel_type: "Gasolina", mileage: 58000, color: "Blanco", price: 17500, description: "Servicios en agencia, llantas nuevas, familiar.", category: "SUV" },
-    { id: 50, make: "Dodge Challenger", year: 2018, fuel_type: "Gasolina", mileage: 50000, color: "Naranja", price: 29000, description: "Muscle car puro, rines negros, impecable.", category: "Deportivo" }
+  const marcas = [
+    "Porsche 911 Carrera GT", "Ferrari F8 Tributo", "Lamborghini Huracán", 
+    "McLaren 720S", "Aston Martin Vantage", "Mercedes-AMG GT", 
+    "BMW M8 Competition", "Audi R8 V10", "Bentley Continental GT"
   ];
 
-  // Añadimos las imágenes automáticas
-  return listaAutos.map(auto => ({
-    ...auto,
-    image: `https://picsum.photos/seed/${auto.id + 100}/800/600`
-  }));
+  const descripciones = [
+    "Ingeniería alemana en su máxima expresión, velocidad y elegancia.",
+    "El rugido de un motor V8 que redefine la adrenalina en pista.",
+    "Diseño aerodinámico inspirado en la aviación de combate.",
+    "Lujo artesanal combinado con un rendimiento de superdeportivo.",
+    "La combinación perfecta entre confort ejecutivo y potencia bruta."
+  ];
+
+  return Array.from({ length: 50 }, (_, i) => {
+    const marca = marcas[i % marcas.length];
+    // Aquí creamos el array de 3 fotos diferentes por cada auto
+    const images = [
+      `https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800&sig=${i}1`,
+      `https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&q=80&w=800&sig=${i}2`,
+      `https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=800&sig=${i}3`
+    ];
+
+    return {
+      id: i + 1,
+      make: marca,
+      year: 2022 + (i % 3),
+      price: Math.floor(Math.random() * (350000 - 80000) + 80000),
+      description: descripciones[i % descripciones.length],
+      // Importante: Mandamos el array de imágenes
+      images: images, 
+      hp: Math.floor(Math.random() * (800) + 400),
+      accel: (Math.random() * (4.5 - 2.5) + 2.5).toFixed(1),
+      fuel_type: "Gasolina Premium",
+      mileage: Math.floor(Math.random() * 15000)
+    };
+  });
 };
