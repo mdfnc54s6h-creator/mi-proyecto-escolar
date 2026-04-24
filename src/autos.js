@@ -1,33 +1,26 @@
-// src/autos.js
+const marcas = ["Toyota", "Chevrolet", "Ferrari", "Lamborghini", "Bugatti", "BMW", "Mercedes", "Audi", "Porsche", "Rolls-Royce"];
+const categorias = ["Hypercars", "Sedan", "Coupes", "SUV", "Deportivos", "Luxury"];
 
-const generarAutos = () => {
-  const marcas = ["Ford", "Toyota", "Chevrolet", "Ferrari", "Lamborghini", "Bugatti", "BMW", "Mercedes", "Audi", "Porsche", "Rolls-Royce", "Bentley", "Nissan", "Honda", "McLaren"];
-  const categorias = ["pickup", "hypercars", "sedan", "coupes", "SUV", "deportivos", "luxury"];
-  
-  let autos = [];
-  let idContador = 1;
-
-  for (let i = 0; i < 350; i++) {
+export const generarAutos = () => {
+  const listaAutos = [];
+  for (let i = 1; i <= 350; i++) {
     const marcaAleatoria = marcas[Math.floor(Math.random() * marcas.length)];
     const catAleatoria = categorias[Math.floor(Math.random() * categorias.length)];
     
-    autos.push({
-      id: idContador++,
+    listaAutos.push({
+      id: i,
       make: marcaAleatoria,
-      model: `${catAleatoria.toUpperCase()} Model ${idContador}`,
-      year: 2020 + Math.floor(Math.random() * 5),
-      price: 20000 + Math.floor(Math.random() * 1000000),
+      model: `Modelo ${i}`,
+      year: 2020 + Math.floor(Math.random() * 6),
+      price: 50000 + Math.floor(Math.random() * 1000000),
       mileage: Math.floor(Math.random() * 50000),
       fuel_type: "Gasolina",
-      transmission: "Automática",
-      category: catAleatoria,
-      hp: 150 + Math.floor(Math.random() * 800),
-      drivetrain: "AWD",
-      image: `https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop`,
-      description: `Vehículo de alto rendimiento en la categoría ${catAleatoria}.`
+      transmission: "Automático",
+      color: "Varios",
+      description: `Vehículo de alto rendimiento en la categoría ${catAleatoria}.`,
+      // Esto hace que cada auto tenga una foto diferente basada en su número (sigId)
+      image: `https://picsum.photos/seed/${i + 50}/800/600`
     });
   }
-  return autos;
+  return listaAutos;
 };
-
-export const listaAutos = generarAutos();
