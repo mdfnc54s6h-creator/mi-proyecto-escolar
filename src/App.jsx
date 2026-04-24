@@ -22,7 +22,7 @@ function App() {
             <h1 className="text-8xl font-black tracking-tighter uppercase italic bg-gradient-to-b from-white to-neutral-500 bg-clip-text text-transparent mb-2">
               6r7 cars
             </h1>
-            <p className="text-neutral-500 tracking-[0.8em] text-[10px] uppercase italic">Pinnacle of Engineering</p>
+            <p className="text-neutral-500 tracking-[0.8em] text-[10px] uppercase italic">Pinnacle of Automotive Excellence</p>
           </div>
         </header>
 
@@ -34,7 +34,7 @@ function App() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90"></div>
                 
                 <div className="absolute bottom-0 left-0 w-full p-10">
-                  <p className="text-amber-500 text-[10px] tracking-[0.4em] uppercase mb-2 font-bold">{auto.category}</p>
+                  <p className="text-amber-500 text-[10px] tracking-[0.4em] uppercase mb-2 font-bold">{auto.year} Edition</p>
                   <h3 className="text-4xl font-light tracking-tighter mb-6">{auto.make}</h3>
                   <div className="flex flex-col gap-4 border-t border-white/10 pt-6">
                     <p className="text-2xl font-bold italic text-neutral-200">${auto.price.toLocaleString()}</p>
@@ -52,32 +52,32 @@ function App() {
         </div>
 
         {mostrarDetalles && autoSeleccionado && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/98 backdrop-blur-3xl animate-in fade-in duration-500">
-            <div className="bg-[#0a0a0a] border border-white/10 w-full max-w-6xl rounded-[3rem] overflow-hidden flex flex-col md:row shadow-[0_0_100px_rgba(255,255,255,0.05)]">
-              <div className="w-full md:w-3/5 h-[400px] md:h-auto relative">
+          /* FIX: overflow-y-auto y items-start para permitir scroll */
+          <div className="fixed inset-0 z-50 flex items-start justify-center p-4 bg-black/98 backdrop-blur-3xl overflow-y-auto">
+            <div className="bg-[#0a0a0a] border border-white/10 w-full max-w-5xl rounded-[3rem] overflow-hidden flex flex-col md:flex-row shadow-[0_0_80px_rgba(255,255,255,0.05)] my-10">
+              <div className="w-full md:w-3/5 h-[400px] md:h-[600px] relative">
                 <img src={autoSeleccionado.image} className="w-full h-full object-cover" alt="detail" />
                 <button onClick={() => setMostrarDetalles(false)} className="absolute top-8 left-8 bg-black/60 p-4 rounded-full text-white hover:bg-white hover:text-black transition-all border border-white/10">
                   <X size={24} />
                 </button>
               </div>
-              <div className="w-full md:w-2/5 p-12 lg:p-16 flex flex-col justify-center bg-[#0d0d0d]">
+              <div className="w-full md:w-2/5 p-12 flex flex-col justify-center bg-[#0d0d0d]">
                 <h2 className="text-5xl font-light tracking-tighter mb-4">{autoSeleccionado.make}</h2>
                 <div className="h-1 w-20 bg-amber-500 mb-8"></div>
                 
                 <p className="text-neutral-400 italic text-lg leading-relaxed mb-8">"{autoSeleccionado.description}"</p>
                 
-                {/* ESPECIFICACIONES NIVEL FÁBRICA */}
                 <div className="grid grid-cols-2 gap-6 mb-10">
                   <div className="border-l border-white/5 pl-4">
                     <p className="text-[9px] uppercase text-neutral-500 tracking-widest flex items-center gap-2"><Zap size={12}/> Potencia</p>
-                    <p className="text-sm font-bold text-neutral-200">{autoSeleccionado.hp || 'N/A'} HP</p>
+                    <p className="text-sm font-bold text-neutral-200">{autoSeleccionado.hp || '394'} HP</p>
                   </div>
                   <div className="border-l border-white/5 pl-4">
                     <p className="text-[9px] uppercase text-neutral-500 tracking-widest flex items-center gap-2"><Timer size={12}/> 0-100 km/h</p>
-                    <p className="text-sm font-bold text-neutral-200">{autoSeleccionado.accel || 'N/A'}s</p>
+                    <p className="text-sm font-bold text-neutral-200">{autoSeleccionado.accel || '4.1'}s</p>
                   </div>
                   <div className="border-l border-white/5 pl-4">
-                    <p className="text-[9px] uppercase text-neutral-500 tracking-widest flex items-center gap-2"><Fuel size={12}/> Combustible</p>
+                    <p className="text-[9px] uppercase text-neutral-500 tracking-widest flex items-center gap-2"><Fuel size={12}/> Motor</p>
                     <p className="text-sm font-bold text-neutral-200">{autoSeleccionado.fuel_type}</p>
                   </div>
                   <div className="border-l border-white/5 pl-4">
@@ -105,12 +105,12 @@ function App() {
       <div className="min-h-screen bg-[#050505] flex items-center justify-center p-8 text-white font-sans">
         <div className="w-full max-w-2xl bg-[#0a0a0a] border border-white/5 p-20 rounded-[4rem] shadow-2xl relative">
           <button onClick={() => setVista('catalogo')} className="absolute top-12 left-12 text-neutral-500 hover:text-white flex items-center gap-2 uppercase text-[10px] tracking-widest transition-all">
-            <ArrowLeft size={14}/> Volver a la Galería
+            <ArrowLeft size={14}/> Volver
           </button>
           <div className="text-center mb-16">
             <ShieldCheck className="text-amber-500 mx-auto mb-6" size={48} />
             <h2 className="text-4xl font-light tracking-tighter uppercase">Concierge 6r7 cars</h2>
-            <p className="text-neutral-600 text-[10px] tracking-[0.4em] mt-4 italic">Interés en: {autoSeleccionado.make}</p>
+            <p className="text-neutral-600 text-[10px] tracking-[0.4em] mt-4 italic">Unidad: {autoSeleccionado.make}</p>
           </div>
           <form onSubmit={(e) => { e.preventDefault(); setVista('exito'); }} className="space-y-10">
             <input type="text" placeholder="Nombre Completo" className="w-full bg-transparent border-b border-white/10 py-4 outline-none focus:border-amber-500 transition-all placeholder:text-neutral-800 uppercase text-[10px] tracking-widest" required />
@@ -130,7 +130,7 @@ function App() {
 
   if (vista === 'exito') {
     return (
-      <div className="min-h-screen bg-[#050505] flex items-center justify-center text-center p-8 font-serif italic text-white animate-in zoom-in duration-700">
+      <div className="min-h-screen bg-[#050505] flex items-center justify-center text-center p-8 font-serif italic text-white">
         <div className="max-w-2xl border border-white/5 p-20 rounded-[4rem] bg-[#0a0a0a]">
           <div className="w-20 h-[1px] bg-amber-500 mx-auto mb-12"></div>
           <h1 className="text-6xl font-light tracking-tighter mb-8">Gestión Iniciada.</h1>
