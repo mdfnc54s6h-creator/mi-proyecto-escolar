@@ -1,39 +1,76 @@
 export const generarAutos = () => {
-  const marcas = [
-    "Porsche 911 Carrera GT", "Ferrari F8 Tributo", "Lamborghini Huracán", 
-    "McLaren 720S", "Aston Martin Vantage", "Mercedes-AMG GT", 
-    "BMW M8 Competition", "Audi R8 V10", "Bentley Continental GT"
+  const listaOficial = [
+    { name: "Porsche 911 Carrera (992)", year: 2024, engine: "3.0L Boxer 6-cil Bi-Turbo", hp: 394, torque: "450 Nm", accel: "4.1", topSpeed: "294 km/h", tech: "PASM, frenos monobloque aluminio", desc: "Motor bóxer, precisión alemana y un legado inigualable." },
+    { name: "Tesla Model 3 Performance", year: 2024, engine: "Dual Motor Eléctrico", hp: 510, torque: "741 Nm", accel: "3.1", topSpeed: "262 km/h", tech: "Suspensión adaptativa, modo Pista V3", desc: "Aceleración eléctrica instantánea de alto desempeño." },
+    { name: "Toyota Hilux SRX", year: 2023, engine: "2.8L Turbo Diesel Intercooler", hp: 204, torque: "500 Nm", accel: "10.1", topSpeed: "175 km/h", tech: "Toyota Safety Sense (TSS), bloqueo diferencial", desc: "Indestructible, preparada para cualquier terreno." },
+    { name: "Ferrari SF90 Stradale", year: 2023, engine: "4.0L V8 Bi-Turbo + 3 Motores Eléctricos", hp: 1000, torque: "800 Nm", accel: "2.5", topSpeed: "340 km/h", tech: "eSSC, aerodinámica activa flap Gurney", desc: "El rugido de un motor V8 que redefine la adrenalina." },
+    { name: "BMW M4 Competition", year: 2024, engine: "3.0L M TwinPower Turbo 6-cil", hp: 510, torque: "650 Nm", accel: "3.9", topSpeed: "290 km/h", tech: "M Steptronic 8v, diferencial M activo", desc: "Ingeniería alemana en su máxima expresión." },
+    { name: "Ford Mustang GT", year: 2024, engine: "5.0L V8 Coyote 4ta Gen", hp: 480, torque: "560 Nm", accel: "4.3", topSpeed: "250 km/h", tech: "Escape válvula activa, Torsen 3.73", desc: "Fuerza bruta americana y motor V8 legendario." },
+    { name: "Lamborghini Revuelto", year: 2024, engine: "6.5L V12 Atmosférico + Híbrido", hp: 1015, torque: "725 Nm", accel: "2.5", topSpeed: "350 km/h", tech: "Chasis Monofuselage, vectorización par", desc: "Diseño aerodinámico inspirado en aviación de combate." },
+    { name: "Bugatti Chiron Super Sport", year: 2022, engine: "8.0L W16 Quad-Turbo", hp: 1600, torque: "1600 Nm", accel: "2.4", topSpeed: "440 km/h", tech: "Carrocería Longtail, 10 radiadores", desc: "La cumbre absoluta de la ingeniería automotriz." },
+    { name: "Jeep Wrangler Rubicon", year: 2023, engine: "3.6L V6 Pentastar", hp: 285, torque: "353 Nm", accel: "7.5", topSpeed: "160 km/h", tech: "Rock-Trac HD, Ejes Dana 44", desc: "Libertad total y capacidad off-road extrema." },
+    { name: "Audi RS6 Avant", year: 2024, engine: "4.0L V8 Bi-Turbo MHEV", hp: 600, torque: "800 Nm", accel: "3.6", topSpeed: "305 km/h", tech: "Quattro diferencial deportivo, eje trasero direccional", desc: "Versatilidad familiar con alma de superdeportivo." },
+    { name: "Nissan GT-R Nismo", year: 2024, engine: "3.8L V6 Twin-Turbo VR38DETT", hp: 600, torque: "652 Nm", accel: "2.8", topSpeed: "315 km/h", tech: "Turbos GT3, ATTESA E-TS AWD", desc: "Godzilla: tracción total y aceleración física." },
+    { name: "Mercedes-AMG G63", year: 2023, engine: "4.0L V8 Biturbo AMG", hp: 585, torque: "850 Nm", accel: "4.5", topSpeed: "220 km/h", tech: "Tres bloqueos diferencial, AMG Ride Control", desc: "El icono del lujo todoterreno y potencia bruta." },
+    { name: "Chevrolet Corvette Z06", year: 2023, engine: "5.5L V8 LT6 Plano", hp: 670, torque: "623 Nm", accel: "2.6", topSpeed: "312 km/h", tech: "Cárter seco, motor atmosférico más potente", desc: "Rendimiento de motor central con ADN de circuito." },
+    { name: "Honda Civic Type R (FL5)", year: 2024, engine: "2.0L VTEC Turbo K20C1", hp: 315, torque: "420 Nm", accel: "5.4", topSpeed: "275 km/h", tech: "Suspensión doble eje, LSD helicoidal", desc: "El rey de la tracción delantera en pista." },
+    { name: "Land Rover Defender 110", year: 2023, engine: "3.0L 6-cil Diesel MHEV", hp: 300, torque: "650 Nm", accel: "7.0", topSpeed: "191 km/h", tech: "Arquitectura D7x, Terrain Response 2", desc: "Lujo artesanal para expediciones sin límites." },
+    { name: "McLaren 750S", year: 2024, engine: "4.0L V8 Twin-Turbo", hp: 750, torque: "800 Nm", accel: "2.8", topSpeed: "332 km/h", tech: "PCC III, alerón DRS de F1", desc: "Ligereza extrema y tecnología de competencia." },
+    { name: "Volkswagen Golf R", year: 2023, engine: "2.0L TSI EA888 Gen 4", hp: 320, torque: "420 Nm", accel: "4.7", topSpeed: "270 km/h", tech: "4Motion Torque Vectoring, Modo Drift", desc: "El hot hatch definitivo con tracción integral." },
+    { name: "Dodge Challenger Hellcat Redeye", year: 2023, engine: "6.2L V8 Supercharged H.O.", hp: 797, torque: "959 Nm", accel: "3.4", topSpeed: "326 km/h", tech: "SRT Power Chiller, TorqueFlite 8HP90", desc: "Músculo puro alimentado por supercargador." },
+    { name: "Subaru WRX STI Final Edition", year: 2021, engine: "2.5L Turbo Boxer EJ25", hp: 310, torque: "407 Nm", accel: "4.9", topSpeed: "255 km/h", tech: "DCCD, Symmetrical AWD", desc: "Leyenda del Rally con control total del conductor." },
+    { name: "Ram 1500 TRX", year: 2024, engine: "6.2L V8 HEMI Supercharged", hp: 702, torque: "881 Nm", accel: "4.5", topSpeed: "190 km/h", tech: "Bilstein Black Hawk e2, sensores de vuelo", desc: "La pickup más rápida y capaz del desierto." },
+    { name: "Koenigsegg Jesko Absolut", year: 2023, engine: "5.0L V8 Twin-Turbo Plano", hp: 1600, torque: "1500 Nm", accel: "2.5", topSpeed: "+500 km/h", tech: "LST 9 velocidades, aerodinámica mínima", desc: "Búsqueda de la velocidad máxima absoluta." },
+    { name: "Aston Martin DBS V12", year: 2023, engine: "5.2L V12 Bi-Turbo", hp: 725, torque: "900 Nm", accel: "3.4", topSpeed: "340 km/h", tech: "Chasis aluminio extruido, frenos cerámicos", desc: "Brutalidad elegante en un Grand Tourer V12." },
+    { name: "Rimac Nevera", year: 2023, engine: "4 Motores Eléctricos", hp: 1914, torque: "2360 Nm", accel: "1.81", topSpeed: "412 km/h", tech: "Vectorización R-AWTV, IA de pista", desc: "El hiperdeportivo eléctrico que rompe récords." },
+    { name: "Toyota GR Yaris", year: 2024, engine: "1.6L 3-cil Turbo", hp: 261, torque: "360 Nm", accel: "5.5", topSpeed: "230 km/h", tech: "GR-Four AWD, techo de carbono", desc: "Un coche de WRC legal para la calle." },
+    { name: "Cadillac CT5-V Blackwing", year: 2024, engine: "6.2L V8 Supercharged", hp: 668, torque: "893 Nm", accel: "3.4", topSpeed: "322 km/h", tech: "Magnetic Ride 4.0, frenos Brembo", desc: "El sedán de alto rendimiento más puro." },
+    { name: "Lotus Emira V6", year: 2023, engine: "3.5L V6 Supercharged", hp: 400, torque: "420 Nm", accel: "4.3", topSpeed: "290 km/h", tech: "Dirección hidráulica, chasis aluminio", desc: "El último Lotus con motor de combustión." },
+    { name: "GMC Hummer EV Edition 1", year: 2023, engine: "3 Motores Eléctricos", hp: 1000, torque: "1017 Nm", accel: "3.0", topSpeed: "170 km/h", tech: "CrabWalk, suspensión de extracción", desc: "Reinvención eléctrica de un icono táctico." },
+    { name: "Alfa Romeo Giulia Quadrifoglio", year: 2024, engine: "2.9L V6 Bi-Turbo", hp: 510, torque: "600 Nm", accel: "3.9", topSpeed: "307 km/h", tech: "Aero Splitter activo, cardán de carbono", desc: "Pasión italiana con alma de Ferrari." },
+    { name: "Pagani Huayra Roadster BC", year: 2022, engine: "6.0L V12 Bi-Turbo AMG", hp: 800, torque: "1050 Nm", accel: "3.0", topSpeed: "370 km/h", tech: "Carbo-Triax HP62, escape titanio", desc: "Arte sobre ruedas con ingeniería extrema." },
+    { name: "Ford F-150 Raptor R", year: 2024, engine: "5.2L V8 Supercharged Predator", hp: 720, torque: "868 Nm", accel: "4.4", topSpeed: "180 km/h", tech: "FOX Live Valve 3.1, llantas 37\"", desc: "Dominio total sobre cualquier superficie." },
+    { name: "Maserati MC20", year: 2023, engine: "3.0L V6 Nettuno Twin-Turbo", hp: 630, torque: "730 Nm", accel: "2.9", topSpeed: "325 km/h", tech: "Precámara F1, monocasco carbono", desc: "El regreso de Maserati a los superdeportivos." },
+    { name: "BMW M5 Competition", year: 2023, engine: "4.4L V8 M TwinPower Turbo", hp: 625, torque: "750 Nm", accel: "3.3", topSpeed: "305 km/h", tech: "M xDrive 2WD mode, chasis adaptativo", desc: "El sedán ejecutivo definitivo en rendimiento." },
+    { name: "Rolls-Royce Spectre", year: 2024, engine: "Dual Motors Eléctricos", hp: 584, torque: "900 Nm", accel: "4.5", topSpeed: "250 km/h", tech: "Suspensión Planar, arquitectura de lujo", desc: "El primer Rolls-Royce totalmente eléctrico." },
+    { name: "Audi RS e-tron GT", year: 2023, engine: "Dual Motores Eléctricos", hp: 646, torque: "830 Nm", accel: "3.3", topSpeed: "250 km/h", tech: "Quattro eléctrica, 2 velocidades atrás", desc: "Gran turismo eléctrico con diseño futurista." },
+    { name: "Bentley Continental GT Speed", year: 2024, engine: "6.0L W12 TSI", hp: 659, torque: "900 Nm", accel: "3.6", topSpeed: "335 km/h", tech: "Barras 48V activas, frenos cerámicos", desc: "El pináculo del lujo y la potencia Gran Turismo." },
+    { name: "Range Rover Sport SV", year: 2024, engine: "4.4L V8 Twin-Turbo MHEV", hp: 635, torque: "750 Nm", accel: "3.8", topSpeed: "290 km/h", tech: "Suspensión 6D Dynamics hidráulica", desc: "Rendimiento dinámico en un SUV de lujo." },
+    { name: "Mazda MX-5 Miata ND", year: 2024, engine: "2.0L SkyActiv-G 4-cil", hp: 184, torque: "205 Nm", accel: "6.5", topSpeed: "219 km/h", tech: "KPC, peso 50/50 perfecto", desc: "La esencia pura de la conducción ligera." },
+    { name: "Nissan Z Performance", year: 2024, engine: "3.0L V6 Twin-Turbo", hp: 400, torque: "475 Nm", accel: "4.5", topSpeed: "250 km/h", tech: "Eje carbono, diferencial mecánico LSD", desc: "Deportivo retro-futurista con alma biturbo." },
+    { name: "Hyundai Ioniq 5 N", year: 2024, engine: "Dual Electric Motors", hp: 650, torque: "770 Nm", accel: "3.4", topSpeed: "260 km/h", tech: "N e-Shift, Drift Optimizer", desc: "El eléctrico diseñado para entusiastas de la pista." },
+    { name: "Gordon Murray T.50", year: 2023, engine: "3.9L V12 Atmosférico Cosworth", hp: 663, torque: "467 Nm", accel: "2.8", topSpeed: "363 km/h", tech: "Ventilador efecto suelo, 12,100 rpm", desc: "Perfección analógica sin concesiones." },
+    { name: "Ford Bronco Raptor", year: 2024, engine: "3.0L V6 EcoBoost Twin-Turbo", hp: 418, torque: "596 Nm", accel: "6.0", topSpeed: "161 km/h", tech: "Ejes Dana 50/44, FOX HOSS 4.0", desc: "Inspirada en las carreras Ultra4 del desierto." },
+    { name: "Porsche 718 Cayman GT4 RS", year: 2023, engine: "4.0L Atmosférico Flat-6", hp: 500, torque: "450 Nm", accel: "3.4", topSpeed: "315 km/h", tech: "Tomas aire ventanilla, ala cuello cisne", desc: "Agilidad de motor central con motor de GT3." },
+    { name: "Ariel Atom 4", year: 2023, engine: "2.0L i-VTEC Turbo Honda", hp: 320, torque: "420 Nm", accel: "2.8", topSpeed: "261 km/h", tech: "Chasis tubular expuesto, Bilstein", desc: "Rendimiento de superdeportivo sin carrocería." },
+    { name: "Chevrolet Silverado EV", year: 2024, engine: "Dual Motors Eléctricos", hp: 754, torque: "1064 Nm", accel: "4.5", topSpeed: "180 km/h", tech: "Midgate, dirección 4 ruedas", desc: "Versatilidad eléctrica de próxima generación." },
+    { name: "Ferrari Purosangue", year: 2024, engine: "6.5L V12 Atmosférico", hp: 725, torque: "716 Nm", accel: "3.3", topSpeed: "310 km/h", tech: "Suspensión Multimatic activa", desc: "El primer Ferrari de cuatro puertas con alma V12." },
+    { name: "Lamborghini Urus Performante", year: 2023, engine: "4.0L V8 Bi-Turbo", hp: 666, torque: "850 Nm", accel: "3.3", topSpeed: "306 km/h", tech: "Fibra carbono, Modo Rally", desc: "El Super SUV que desafía los límites." },
+    { name: "Zenvo Aurora Tur", year: 2024, engine: "6.6L V12 Quad-Turbo Híbrido", hp: 1450, torque: "1400 Nm", accel: "2.3", topSpeed: "450 km/h", tech: "Motor 9,800 rpm, monocasco modular", desc: "Hiperdeportivo danés con potencia híbrida." },
+    { name: "Lucid Air Sapphire", year: 2024, engine: "Triple Motor Eléctrico", hp: 1234, torque: "1939 Nm", accel: "1.89", topSpeed: "330 km/h", tech: "Frenos cerámicos, vectorización activa", desc: "El sedán más rápido del mundo." },
+    { name: "Lexus LFA", year: 2012, engine: "4.8L V10 Atmosférico", hp: 560, torque: "480 Nm", accel: "3.7", topSpeed: "325 km/h", tech: "Acústica Yamaha, tacómetro digital", desc: "Una obra maestra de sonido y fibra de carbono." },
+    { name: "Gordon Murray T.33", year: 2024, engine: "3.9L V12 Atmosférico Cosworth", hp: 615, torque: "451 Nm", accel: "2.9", topSpeed: "335 km/h", tech: "Chasis iStream, manual Xtrac", desc: "Pureza atemporal y conexión mecánica." }
   ];
 
-  const descripciones = [
-    "Ingeniería alemana en su máxima expresión, velocidad y elegancia.",
-    "El rugido de un motor V8 que redefine la adrenalina en pista.",
-    "Diseño aerodinámico inspirado en la aviación de combate.",
-    "Lujo artesanal combinado con un rendimiento de superdeportivo.",
-    "La combinación perfecta entre confort ejecutivo y potencia bruta."
-  ];
-
-  return Array.from({ length: 50 }, (_, i) => {
-    const marca = marcas[i % marcas.length];
-    // Aquí creamos el array de 3 fotos diferentes por cada auto
-    const images = [
-      `https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800&sig=${i}1`,
-      `https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&q=80&w=800&sig=${i}2`,
-      `https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=800&sig=${i}3`
-    ];
-
-    return {
-      id: i + 1,
-      make: marca,
-      year: 2022 + (i % 3),
-      price: Math.floor(Math.random() * (350000 - 80000) + 80000),
-      description: descripciones[i % descripciones.length],
-      // Importante: Mandamos el array de imágenes
-      images: images, 
-      hp: Math.floor(Math.random() * (800) + 400),
-      accel: (Math.random() * (4.5 - 2.5) + 2.5).toFixed(1),
-      fuel_type: "Gasolina Premium",
-      mileage: Math.floor(Math.random() * 15000)
-    };
-  });
+  return listaOficial.map((auto, i) => ({
+    id: i + 1,
+    make: auto.name,
+    year: auto.year, // <--- Aquí se asigna el año real que me pasaste
+    price: Math.floor(Math.random() * (1500000 - 45000) + 45000),
+    description: auto.desc,
+    specs: {
+      motor: auto.engine,
+      hp: auto.hp,
+      torque: auto.torque,
+      topSpeed: auto.topSpeed,
+      tech: auto.tech
+    },
+    images: [
+      `https://picsum.photos/seed/6r7_${i}a/1200/800`,
+      `https://picsum.photos/seed/6r7_${i}b/1200/800`,
+      `https://picsum.photos/seed/6r7_${i}c/1200/800`
+    ],
+    accel: auto.accel,
+    hp: auto.hp
+  }));
 };
