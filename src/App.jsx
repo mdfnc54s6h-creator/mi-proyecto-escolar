@@ -9,7 +9,7 @@ function App() {
   const [autoSeleccionado, setAutoSeleccionado] = useState(null);
   const [botAbierto, setBotAbierto] = useState(false);
 
-  const numeroWhatsApp = "1234567890"; 
+  const numeroWhatsApp = "8493528972"; 
 
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-amber-500/30">
