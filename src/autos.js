@@ -7,10 +7,7 @@ const catálogoAutos = [
     imagenes: {
       delantero: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800",
       trasero: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=800",
-      interior: "https://images.unsplash.com/photo-1611859328053-3cbc9f9399f4?q=80&w=800"
-    }
-  },
-  {
+      interior: https://st.automobilemag.com/uploads/sites/11/2018/12/Porsche-992-911-Tech-Workshop-Interior.jpg
     id: 2,
     nombre: "Tesla Model 3 Performance",
     descripcion: "Motor: Dual Motor Eléctrico de alta eficiencia. Potencia: 510 hp. Torque: 741 Nm. Aceleración: 0-100 km/h en 3.1s. Velocidad Máxima: 262 km/h. Transmisión: Direct Drive. Tracción: Integral (AWD). Tecnología: Suspensión adaptativa y modo Pista V3.",
