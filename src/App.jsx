@@ -8,7 +8,7 @@ function App() {
 
   const abrirWhatsApp = (nombreAuto) => {
     const mensaje = `Hola, estoy interesado en el ${nombreAuto} que vi en el catálogo.`;
-    window.open(`https://wa.me/18433528972?text=${encodeURIComponent(mensaje)}`, '_blank');
+    window.open(`https://wa.me/18493528972?text=${encodeURIComponent(mensaje)}`, '_blank');
   };
 
   return (
