@@ -1,76 +1,505 @@
-export const generarAutos = () => {
-  const listaOficial = [
-    { name: "Porsche 911 Carrera (992)", year: 2024, engine: "3.0L Boxer 6-cil Bi-Turbo", hp: 394, torque: "450 Nm", accel: "4.1", topSpeed: "294 km/h", tech: "PASM, frenos monobloque aluminio", desc: "Motor bóxer, precisión alemana y un legado inigualable." },
-    { name: "Tesla Model 3 Performance", year: 2024, engine: "Dual Motor Eléctrico", hp: 510, torque: "741 Nm", accel: "3.1", topSpeed: "262 km/h", tech: "Suspensión adaptativa, modo Pista V3", desc: "Aceleración eléctrica instantánea de alto desempeño." },
-    { name: "Toyota Hilux SRX", year: 2023, engine: "2.8L Turbo Diesel Intercooler", hp: 204, torque: "500 Nm", accel: "10.1", topSpeed: "175 km/h", tech: "Toyota Safety Sense (TSS), bloqueo diferencial", desc: "Indestructible, preparada para cualquier terreno." },
-    { name: "Ferrari SF90 Stradale", year: 2023, engine: "4.0L V8 Bi-Turbo + 3 Motores Eléctricos", hp: 1000, torque: "800 Nm", accel: "2.5", topSpeed: "340 km/h", tech: "eSSC, aerodinámica activa flap Gurney", desc: "El rugido de un motor V8 que redefine la adrenalina." },
-    { name: "BMW M4 Competition", year: 2024, engine: "3.0L M TwinPower Turbo 6-cil", hp: 510, torque: "650 Nm", accel: "3.9", topSpeed: "290 km/h", tech: "M Steptronic 8v, diferencial M activo", desc: "Ingeniería alemana en su máxima expresión." },
-    { name: "Ford Mustang GT", year: 2024, engine: "5.0L V8 Coyote 4ta Gen", hp: 480, torque: "560 Nm", accel: "4.3", topSpeed: "250 km/h", tech: "Escape válvula activa, Torsen 3.73", desc: "Fuerza bruta americana y motor V8 legendario." },
-    { name: "Lamborghini Revuelto", year: 2024, engine: "6.5L V12 Atmosférico + Híbrido", hp: 1015, torque: "725 Nm", accel: "2.5", topSpeed: "350 km/h", tech: "Chasis Monofuselage, vectorización par", desc: "Diseño aerodinámico inspirado en aviación de combate." },
-    { name: "Bugatti Chiron Super Sport", year: 2022, engine: "8.0L W16 Quad-Turbo", hp: 1600, torque: "1600 Nm", accel: "2.4", topSpeed: "440 km/h", tech: "Carrocería Longtail, 10 radiadores", desc: "La cumbre absoluta de la ingeniería automotriz." },
-    { name: "Jeep Wrangler Rubicon", year: 2023, engine: "3.6L V6 Pentastar", hp: 285, torque: "353 Nm", accel: "7.5", topSpeed: "160 km/h", tech: "Rock-Trac HD, Ejes Dana 44", desc: "Libertad total y capacidad off-road extrema." },
-    { name: "Audi RS6 Avant", year: 2024, engine: "4.0L V8 Bi-Turbo MHEV", hp: 600, torque: "800 Nm", accel: "3.6", topSpeed: "305 km/h", tech: "Quattro diferencial deportivo, eje trasero direccional", desc: "Versatilidad familiar con alma de superdeportivo." },
-    { name: "Nissan GT-R Nismo", year: 2024, engine: "3.8L V6 Twin-Turbo VR38DETT", hp: 600, torque: "652 Nm", accel: "2.8", topSpeed: "315 km/h", tech: "Turbos GT3, ATTESA E-TS AWD", desc: "Godzilla: tracción total y aceleración física." },
-    { name: "Mercedes-AMG G63", year: 2023, engine: "4.0L V8 Biturbo AMG", hp: 585, torque: "850 Nm", accel: "4.5", topSpeed: "220 km/h", tech: "Tres bloqueos diferencial, AMG Ride Control", desc: "El icono del lujo todoterreno y potencia bruta." },
-    { name: "Chevrolet Corvette Z06", year: 2023, engine: "5.5L V8 LT6 Plano", hp: 670, torque: "623 Nm", accel: "2.6", topSpeed: "312 km/h", tech: "Cárter seco, motor atmosférico más potente", desc: "Rendimiento de motor central con ADN de circuito." },
-    { name: "Honda Civic Type R (FL5)", year: 2024, engine: "2.0L VTEC Turbo K20C1", hp: 315, torque: "420 Nm", accel: "5.4", topSpeed: "275 km/h", tech: "Suspensión doble eje, LSD helicoidal", desc: "El rey de la tracción delantera en pista." },
-    { name: "Land Rover Defender 110", year: 2023, engine: "3.0L 6-cil Diesel MHEV", hp: 300, torque: "650 Nm", accel: "7.0", topSpeed: "191 km/h", tech: "Arquitectura D7x, Terrain Response 2", desc: "Lujo artesanal para expediciones sin límites." },
-    { name: "McLaren 750S", year: 2024, engine: "4.0L V8 Twin-Turbo", hp: 750, torque: "800 Nm", accel: "2.8", topSpeed: "332 km/h", tech: "PCC III, alerón DRS de F1", desc: "Ligereza extrema y tecnología de competencia." },
-    { name: "Volkswagen Golf R", year: 2023, engine: "2.0L TSI EA888 Gen 4", hp: 320, torque: "420 Nm", accel: "4.7", topSpeed: "270 km/h", tech: "4Motion Torque Vectoring, Modo Drift", desc: "El hot hatch definitivo con tracción integral." },
-    { name: "Dodge Challenger Hellcat Redeye", year: 2023, engine: "6.2L V8 Supercharged H.O.", hp: 797, torque: "959 Nm", accel: "3.4", topSpeed: "326 km/h", tech: "SRT Power Chiller, TorqueFlite 8HP90", desc: "Músculo puro alimentado por supercargador." },
-    { name: "Subaru WRX STI Final Edition", year: 2021, engine: "2.5L Turbo Boxer EJ25", hp: 310, torque: "407 Nm", accel: "4.9", topSpeed: "255 km/h", tech: "DCCD, Symmetrical AWD", desc: "Leyenda del Rally con control total del conductor." },
-    { name: "Ram 1500 TRX", year: 2024, engine: "6.2L V8 HEMI Supercharged", hp: 702, torque: "881 Nm", accel: "4.5", topSpeed: "190 km/h", tech: "Bilstein Black Hawk e2, sensores de vuelo", desc: "La pickup más rápida y capaz del desierto." },
-    { name: "Koenigsegg Jesko Absolut", year: 2023, engine: "5.0L V8 Twin-Turbo Plano", hp: 1600, torque: "1500 Nm", accel: "2.5", topSpeed: "+500 km/h", tech: "LST 9 velocidades, aerodinámica mínima", desc: "Búsqueda de la velocidad máxima absoluta." },
-    { name: "Aston Martin DBS V12", year: 2023, engine: "5.2L V12 Bi-Turbo", hp: 725, torque: "900 Nm", accel: "3.4", topSpeed: "340 km/h", tech: "Chasis aluminio extruido, frenos cerámicos", desc: "Brutalidad elegante en un Grand Tourer V12." },
-    { name: "Rimac Nevera", year: 2023, engine: "4 Motores Eléctricos", hp: 1914, torque: "2360 Nm", accel: "1.81", topSpeed: "412 km/h", tech: "Vectorización R-AWTV, IA de pista", desc: "El hiperdeportivo eléctrico que rompe récords." },
-    { name: "Toyota GR Yaris", year: 2024, engine: "1.6L 3-cil Turbo", hp: 261, torque: "360 Nm", accel: "5.5", topSpeed: "230 km/h", tech: "GR-Four AWD, techo de carbono", desc: "Un coche de WRC legal para la calle." },
-    { name: "Cadillac CT5-V Blackwing", year: 2024, engine: "6.2L V8 Supercharged", hp: 668, torque: "893 Nm", accel: "3.4", topSpeed: "322 km/h", tech: "Magnetic Ride 4.0, frenos Brembo", desc: "El sedán de alto rendimiento más puro." },
-    { name: "Lotus Emira V6", year: 2023, engine: "3.5L V6 Supercharged", hp: 400, torque: "420 Nm", accel: "4.3", topSpeed: "290 km/h", tech: "Dirección hidráulica, chasis aluminio", desc: "El último Lotus con motor de combustión." },
-    { name: "GMC Hummer EV Edition 1", year: 2023, engine: "3 Motores Eléctricos", hp: 1000, torque: "1017 Nm", accel: "3.0", topSpeed: "170 km/h", tech: "CrabWalk, suspensión de extracción", desc: "Reinvención eléctrica de un icono táctico." },
-    { name: "Alfa Romeo Giulia Quadrifoglio", year: 2024, engine: "2.9L V6 Bi-Turbo", hp: 510, torque: "600 Nm", accel: "3.9", topSpeed: "307 km/h", tech: "Aero Splitter activo, cardán de carbono", desc: "Pasión italiana con alma de Ferrari." },
-    { name: "Pagani Huayra Roadster BC", year: 2022, engine: "6.0L V12 Bi-Turbo AMG", hp: 800, torque: "1050 Nm", accel: "3.0", topSpeed: "370 km/h", tech: "Carbo-Triax HP62, escape titanio", desc: "Arte sobre ruedas con ingeniería extrema." },
-    { name: "Ford F-150 Raptor R", year: 2024, engine: "5.2L V8 Supercharged Predator", hp: 720, torque: "868 Nm", accel: "4.4", topSpeed: "180 km/h", tech: "FOX Live Valve 3.1, llantas 37\"", desc: "Dominio total sobre cualquier superficie." },
-    { name: "Maserati MC20", year: 2023, engine: "3.0L V6 Nettuno Twin-Turbo", hp: 630, torque: "730 Nm", accel: "2.9", topSpeed: "325 km/h", tech: "Precámara F1, monocasco carbono", desc: "El regreso de Maserati a los superdeportivos." },
-    { name: "BMW M5 Competition", year: 2023, engine: "4.4L V8 M TwinPower Turbo", hp: 625, torque: "750 Nm", accel: "3.3", topSpeed: "305 km/h", tech: "M xDrive 2WD mode, chasis adaptativo", desc: "El sedán ejecutivo definitivo en rendimiento." },
-    { name: "Rolls-Royce Spectre", year: 2024, engine: "Dual Motors Eléctricos", hp: 584, torque: "900 Nm", accel: "4.5", topSpeed: "250 km/h", tech: "Suspensión Planar, arquitectura de lujo", desc: "El primer Rolls-Royce totalmente eléctrico." },
-    { name: "Audi RS e-tron GT", year: 2023, engine: "Dual Motores Eléctricos", hp: 646, torque: "830 Nm", accel: "3.3", topSpeed: "250 km/h", tech: "Quattro eléctrica, 2 velocidades atrás", desc: "Gran turismo eléctrico con diseño futurista." },
-    { name: "Bentley Continental GT Speed", year: 2024, engine: "6.0L W12 TSI", hp: 659, torque: "900 Nm", accel: "3.6", topSpeed: "335 km/h", tech: "Barras 48V activas, frenos cerámicos", desc: "El pináculo del lujo y la potencia Gran Turismo." },
-    { name: "Range Rover Sport SV", year: 2024, engine: "4.4L V8 Twin-Turbo MHEV", hp: 635, torque: "750 Nm", accel: "3.8", topSpeed: "290 km/h", tech: "Suspensión 6D Dynamics hidráulica", desc: "Rendimiento dinámico en un SUV de lujo." },
-    { name: "Mazda MX-5 Miata ND", year: 2024, engine: "2.0L SkyActiv-G 4-cil", hp: 184, torque: "205 Nm", accel: "6.5", topSpeed: "219 km/h", tech: "KPC, peso 50/50 perfecto", desc: "La esencia pura de la conducción ligera." },
-    { name: "Nissan Z Performance", year: 2024, engine: "3.0L V6 Twin-Turbo", hp: 400, torque: "475 Nm", accel: "4.5", topSpeed: "250 km/h", tech: "Eje carbono, diferencial mecánico LSD", desc: "Deportivo retro-futurista con alma biturbo." },
-    { name: "Hyundai Ioniq 5 N", year: 2024, engine: "Dual Electric Motors", hp: 650, torque: "770 Nm", accel: "3.4", topSpeed: "260 km/h", tech: "N e-Shift, Drift Optimizer", desc: "El eléctrico diseñado para entusiastas de la pista." },
-    { name: "Gordon Murray T.50", year: 2023, engine: "3.9L V12 Atmosférico Cosworth", hp: 663, torque: "467 Nm", accel: "2.8", topSpeed: "363 km/h", tech: "Ventilador efecto suelo, 12,100 rpm", desc: "Perfección analógica sin concesiones." },
-    { name: "Ford Bronco Raptor", year: 2024, engine: "3.0L V6 EcoBoost Twin-Turbo", hp: 418, torque: "596 Nm", accel: "6.0", topSpeed: "161 km/h", tech: "Ejes Dana 50/44, FOX HOSS 4.0", desc: "Inspirada en las carreras Ultra4 del desierto." },
-    { name: "Porsche 718 Cayman GT4 RS", year: 2023, engine: "4.0L Atmosférico Flat-6", hp: 500, torque: "450 Nm", accel: "3.4", topSpeed: "315 km/h", tech: "Tomas aire ventanilla, ala cuello cisne", desc: "Agilidad de motor central con motor de GT3." },
-    { name: "Ariel Atom 4", year: 2023, engine: "2.0L i-VTEC Turbo Honda", hp: 320, torque: "420 Nm", accel: "2.8", topSpeed: "261 km/h", tech: "Chasis tubular expuesto, Bilstein", desc: "Rendimiento de superdeportivo sin carrocería." },
-    { name: "Chevrolet Silverado EV", year: 2024, engine: "Dual Motors Eléctricos", hp: 754, torque: "1064 Nm", accel: "4.5", topSpeed: "180 km/h", tech: "Midgate, dirección 4 ruedas", desc: "Versatilidad eléctrica de próxima generación." },
-    { name: "Ferrari Purosangue", year: 2024, engine: "6.5L V12 Atmosférico", hp: 725, torque: "716 Nm", accel: "3.3", topSpeed: "310 km/h", tech: "Suspensión Multimatic activa", desc: "El primer Ferrari de cuatro puertas con alma V12." },
-    { name: "Lamborghini Urus Performante", year: 2023, engine: "4.0L V8 Bi-Turbo", hp: 666, torque: "850 Nm", accel: "3.3", topSpeed: "306 km/h", tech: "Fibra carbono, Modo Rally", desc: "El Super SUV que desafía los límites." },
-    { name: "Zenvo Aurora Tur", year: 2024, engine: "6.6L V12 Quad-Turbo Híbrido", hp: 1450, torque: "1400 Nm", accel: "2.3", topSpeed: "450 km/h", tech: "Motor 9,800 rpm, monocasco modular", desc: "Hiperdeportivo danés con potencia híbrida." },
-    { name: "Lucid Air Sapphire", year: 2024, engine: "Triple Motor Eléctrico", hp: 1234, torque: "1939 Nm", accel: "1.89", topSpeed: "330 km/h", tech: "Frenos cerámicos, vectorización activa", desc: "El sedán más rápido del mundo." },
-    { name: "Lexus LFA", year: 2012, engine: "4.8L V10 Atmosférico", hp: 560, torque: "480 Nm", accel: "3.7", topSpeed: "325 km/h", tech: "Acústica Yamaha, tacómetro digital", desc: "Una obra maestra de sonido y fibra de carbono." },
-    { name: "Gordon Murray T.33", year: 2024, engine: "3.9L V12 Atmosférico Cosworth", hp: 615, torque: "451 Nm", accel: "2.9", topSpeed: "335 km/h", tech: "Chasis iStream, manual Xtrac", desc: "Pureza atemporal y conexión mecánica." }
-  ];
+const catálogoAutos = [
+  {
+    id: 1,
+    nombre: "Porsche 911 Carrera (2024)",
+    descripcion: "Motor: 3.0L Boxer de 6 cilindros con Bi-Turbo. Potencia: 394 PS. Aceleración: 0-100 km/h en 4.1s.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/7602339916679089003_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/7602339916679089003_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/7602339916679089003_1"
+    }
+  },
+  {
+    id: 2,
+    nombre: "Tesla Model 3 Performance (2024)",
+    descripcion: "Motor: Dual Motor Eléctrico. Potencia: 510 hp. Aceleración: 0-100 km/h en 3.1s.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/1119335802195126516_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/1119335802195126516_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/1119335802195126516_1"
+    }
+  },
+  {
+    id: 3,
+    nombre: "Toyota Hilux SRX (2023)",
+    descripcion: "Motor: 2.8L Turbo Diesel. Potencia: 204 hp. Tracción: 4x4.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/6324001539192373003_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/6324001539192373003_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/6324001539192373003_1"
+    }
+  },
+  {
+    id: 4,
+    nombre: "Ferrari SF90 Stradale (2023)",
+    descripcion: "Motor: 4.0L V8 Bi-Turbo Híbrido. Potencia: 1,000 cv. Aceleración: 2.5s.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/2363859227082977903_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/2363859227082977903_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/2363859227082977903_1"
+    }
+  },
+  {
+    id: 5,
+    nombre: "BMW M4 Competition (2024)",
+    descripcion: "Motor: 3.0L TwinPower Turbo. Potencia: 510 hp. Tracción: Trasera.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/14920663745848845594_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/14920663745848845594_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/14920663745848845594_1"
+    }
+  },
+  {
+    id: 6,
+    nombre: "Ford Mustang GT (2024)",
+    descripcion: "Motor: 5.0L V8 Coyote. Potencia: 480 hp. Transmisión: Manual.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/7496377970744875137_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/7496377970744875137_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/7496377970744875137_1"
+    }
+  },
+  {
+    id: 7,
+    nombre: "Lamborghini Revuelto (2024)",
+    descripcion: "Motor: 6.5L V12 Híbrido. Potencia: 1,015 cv. Velocidad: 350 km/h.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/198568659598985087_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/198568659598985087_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/198568659598985087_1"
+    }
+  },
+  {
+    id: 8,
+    nombre: "Bugatti Chiron Super Sport (2022)",
+    descripcion: "Motor: 8.0L W16. Potencia: 1,600 hp. Velocidad: 440 km/h.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/10733202385098537826_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/10733202385098537826_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/10733202385098537826_1"
+    }
+  },
+  {
+    id: 9,
+    nombre: "Jeep Wrangler Rubicon (2023)",
+    descripcion: "Motor: 3.6L V6. Capacidad Off-Road extrema. Tracción: 4x4.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/5882947204494173233_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/5882947204494173233_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/5882947204494173233_1"
+    }
+  },
+  {
+    id: 10,
+    nombre: "Audi RS6 Avant (2024)",
+    descripcion: "Motor: 4.0L V8 Bi-Turbo. Potencia: 600 hp. Carrocería: Familiar.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/13832548881442450298_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/13832548881442450298_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/13832548881442450298_1"
+    }
+  },
+  {
+    id: 11,
+    nombre: "Nissan GT-R Nismo (2024)",
+    descripcion: "Motor: 3.8L V6 Twin-Turbo. Potencia: 600 hp. Tracción: AWD.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/6614597273773910099_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/6614597273773910099_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/6614597273773910099_1"
+    }
+  },
+  {
+    id: 12,
+    nombre: "Mercedes-AMG G63 (2023)",
+    descripcion: "Motor: 4.0L V8 Biturbo. Potencia: 585 hp. Icono del lujo Off-road.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/15893486510290913151_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/15893486510290913151_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/15893486510290913151_1"
+    }
+  },
+  {
+    id: 13,
+    nombre: "Chevrolet Corvette Z06 (2023)",
+    descripcion: "Motor: 5.5L V8 LT6. Potencia: 670 hp. Motor central.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/6357144372607756168_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/6357144372607756168_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/6357144372607756168_1"
+    }
+  },
+  {
+    id: 14,
+    nombre: "Honda Civic Type R (2024)",
+    descripcion: "Motor: 2.0L Turbo. Potencia: 315 hp. Tracción delantera.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/8303648548407017359_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/8303648548407017359_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/8303648548407017359_1"
+    }
+  },
+  {
+    id: 15,
+    nombre: "Land Rover Defender 110 (2023)",
+    descripcion: "Motor: 3.0L Diesel MHEV. Potencia: 300 hp. Tracción integral.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/16609951162248703269_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/16609951162248703269_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/16609951162248703269_1"
+    }
+  },
+  {
+    id: 16,
+    nombre: "McLaren 750S (2024)",
+    descripcion: "Motor: 4.0L V8. Potencia: 750 hp. Aceleración: 2.8s.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/8753844850359500297_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/8753844850359500297_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/8753844850359500297_1"
+    }
+  },
+  {
+    id: 17,
+    nombre: "Volkswagen Golf R (2023)",
+    descripcion: "Motor: 2.0L TSI. Potencia: 320 hp. Tracción: 4Motion.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/13720631713166900293_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/13720631713166900293_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/13720631713166900293_1"
+    }
+  },
+  {
+    id: 18,
+    nombre: "Dodge Challenger Hellcat (2023)",
+    descripcion: "Motor: 6.2L V8 Supercharged. Potencia: 797 hp.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/16395795070098143986_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/16395795070098143986_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/16395795070098143986_1"
+    }
+  },
+  {
+    id: 19,
+    nombre: "Subaru WRX STI (2021)",
+    descripcion: "Motor: 2.5L Turbo Boxer. Potencia: 310 hp. Tracción: Symmetrical AWD.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/12212853496321449292_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/12212853496321449292_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/12212853496321449292_1"
+    }
+  },
+  {
+    id: 20,
+    nombre: "Ram 1500 TRX (2024)",
+    descripcion: "Motor: 6.2L V8 Hemi. Potencia: 702 hp. Pickup más potente.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/354620730280057174_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/354620730280057174_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/354620730280057174_1"
+    }
+  },
+  {
+    id: 21,
+    nombre: "Koenigsegg Jesko Absolut (2023)",
+    descripcion: "Motor: 5.0L V8. Potencia: 1,600 hp. Velocidad: +500 km/h.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/16938624823984716643_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/16938624823984716643_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/16938624823984716643_1"
+    }
+  },
+  {
+    id: 22,
+    nombre: "Aston Martin DBS (2023)",
+    descripcion: "Motor: 5.2L V12. Potencia: 725 hp. Elegancia y potencia.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/5802064457722792595_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/5802064457722792595_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/5802064457722792595_1"
+    }
+  },
+  {
+    id: 23,
+    nombre: "Rimac Nevera (2023)",
+    descripcion: "Motor: Quad-Motor Eléctrico. Potencia: 1,914 hp. Aceleración: 1.8s.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/14678685697047194810_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/14678685697047194810_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/14678685697047194810_1"
+    }
+  },
+  {
+    id: 24,
+    nombre: "Toyota GR Yaris (2024)",
+    descripcion: "Motor: 1.6L 3-cilindros Turbo. Potencia: 261 hp. ADN de Rally.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/12423650056667072532_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/12423650056667072532_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/12423650056667072532_1"
+    }
+  },
+  {
+    id: 25,
+    nombre: "Cadillac CT5-V Blackwing (2024)",
+    descripcion: "Motor: 6.2L V8 Supercharged. Potencia: 668 hp. Sedán de alto rendimiento.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/6882656158457043601_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/6882656158457043601_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/6882656158457043601_1"
+    }
+  },
+  {
+    id: 26,
+    nombre: "Lotus Emira V6 (2023)",
+    descripcion: "Motor: 3.5L V6. Potencia: 400 hp. Ligereza británica.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/2535983896125465872_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/2535983896125465872_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/2535983896125465872_1"
+    }
+  },
+  {
+    id: 27,
+    nombre: "GMC Hummer EV (2023)",
+    descripcion: "Motor: Eléctrico 1,000 hp. Modo CrabWalk.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/14023691445563853928_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/14023691445563853928_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/14023691445563853928_1"
+    }
+  },
+  {
+    id: 28,
+    nombre: "Alfa Romeo Giulia QV (2024)",
+    descripcion: "Motor: 2.9L V6 Bi-Turbo. Potencia: 510 hp. Pasión italiana.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/1099526689824967197_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/1099526689824967197_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/1099526689824967197_1"
+    }
+  },
+  {
+    id: 29,
+    nombre: "Pagani Huayra BC (2022)",
+    descripcion: "Motor: V12 Bi-Turbo. Arte sobre ruedas.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/6882196668202073235_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/6882196668202073235_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/6882196668202073235_1"
+    }
+  },
+  {
+    id: 30,
+    nombre: "Ford Raptor R (2024)",
+    descripcion: "Motor: 5.2L V8 Supercharged. Potencia: 720 hp.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/14012105821806659300_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/14012105821806659300_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/14012105821806659300_1"
+    }
+  },
+  {
+    id: 31,
+    nombre: "Maserati MC20 (2023)",
+    descripcion: "Motor: 3.0L V6 Nettuno. Potencia: 630 hp.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/5115489538937046982_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/5115489538937046982_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/5115489538937046982_1"
+    }
+  },
+  {
+    id: 32,
+    nombre: "BMW M5 Competition (2023)",
+    descripcion: "Motor: 4.4L V8. Potencia: 625 hp. Tracción xDrive.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/617257460343754914_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/617257460343754914_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/617257460343754914_1"
+    }
+  },
+  {
+    id: 33,
+    nombre: "Rolls-Royce Spectre (2024)",
+    descripcion: "Primer Rolls-Royce 100% eléctrico. Ultra lujo.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/15277481216332255018_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/15277481216332255018_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/15277481216332255018_1"
+    }
+  },
+  {
+    id: 34,
+    nombre: "Audi RS e-tron GT (2023)",
+    descripcion: "Motor: Eléctrico. Potencia: 646 hp. Gran Turismo deportivo.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/13885465672055551318_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/13885465672055551318_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/13885465672055551318_1"
+    }
+  },
+  {
+    id: 35,
+    nombre: "Bentley Continental GT (2024)",
+    descripcion: "Motor: 6.0L W12. Potencia: 659 hp. Gran Turismo de lujo.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/2374406324311394042_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/2374406324311394042_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/2374406324311394042_1"
+    }
+  },
+  {
+    id: 36,
+    nombre: "Range Rover Sport SV (2024)",
+    descripcion: "Motor: 4.4L V8. Potencia: 635 hp. SUV de alto rendimiento.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/9554931467424703469_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/9554931467424703469_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/9554931467424703469_1"
+    }
+  },
+  {
+    id: 37,
+    nombre: "Mazda MX-5 Miata (2024)",
+    descripcion: "Motor: 2.0L. Diversión pura al volante.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/13682704861594967926_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/13682704861594967926_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/13682704861594967926_1"
+    }
+  },
+  {
+    id: 38,
+    nombre: "Nissan Z (2024)",
+    descripcion: "Motor: V6 Twin-Turbo. Potencia: 400 hp. Estilo retro.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/7544602846262045527_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/7544602846262045527_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/7544602846262045527_1"
+    }
+  },
+  {
+    id: 39,
+    nombre: "Hyundai Ioniq 5 N (2024)",
+    descripcion: "Motor: Eléctrico. Potencia: 650 hp. Eléctrico radical.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/9956062949829602687_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/9956062949829602687_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/9956062949829602687_1"
+    }
+  },
+  {
+    id: 40,
+    nombre: "Gordon Murray T.50 (2023)",
+    descripcion: "Motor: V12 Atmosférico. Sucesor espiritual del F1.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/9404412436605406950_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/9404412436605406950_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/9404412436605406950_1"
+    }
+  }
+  {
+    id: 41,
+    nombre: "Pagani Utopia (2024)",
+    descripcion: "Motor: 6.0L V12 Bi-Turbo de AMG. Potencia: 864 hp. Torque: 1100 Nm. Una obra maestra de la ingeniería mecánica sin ayudas híbridas.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/7864349357981260533_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/7864349357981260533_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/7864349357981260533_1"
+    }
+  },
+  {
+    id: 42,
+    nombre: "Mercedes-AMG ONE (2023)",
+    descripcion: "Motor: 1.6L V6 Turbo Híbrido (Tecnología F1). Potencia: 1063 hp. Un monoplaza de Fórmula 1 legal para la calle.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/15747668778739075609_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/15747668778739075609_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/15747668778739075609_1"
+    }
+  },
+  {
+    id: 43,
+    nombre: "Ferrari Daytona SP3 (2023)",
+    descripcion: "Motor: 6.5L V12 Atmosférico. Potencia: 840 hp. Inspirado en los prototipos deportivos de los años 60.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/17870746789984293439_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/17870746789984293439_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/17870746789984293439_1"
+    }
+  },
+  {
+    id: 44,
+    nombre: "Porsche 911 GT3 RS (2024)",
+    descripcion: "Motor: 4.0L Boxer de 6 cilindros. Potencia: 525 hp. Aerodinámica activa extrema diseñada para la pista.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/4507965044470772164_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/4507965044470772164_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/4507965044470772164_1"
+    }
+  },
+  {
+    id: 45,
+    nombre: "BMW XM Label Red (2024)",
+    descripcion: "Motor: V8 Híbrido Enchufable. Potencia: 748 hp. El BMW M más potente jamás fabricado.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/13923584054663608224_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/13923584054663608224_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/13923584054663608224_1"
+    }
+  },
+  {
+    id: 46,
+    nombre: "Lamborghini Huracán Sterrato (2023)",
+    descripcion: "Motor: 5.2L V10. Potencia: 610 hp. Un superdeportivo diseñado para divertirse fuera del asfalto.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/2785351459566895207_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/2785351459566895207_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/2785351459566895207_1"
+    }
+  },
+  {
+    id: 47,
+    nombre: "Aston Martin Valkyrie (2023)",
+    descripcion: "Motor: 6.5L V12 Atmosférico + Híbrido. Potencia: 1155 hp. Desarrollado junto a Red Bull Racing.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/1811194301743131859_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/1811194301743131859_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/1811194301743131859_1"
+    }
+  },
+  {
+    id: 48,
+    nombre: "McLaren Artura (2024)",
+    descripcion: "Motor: V6 Híbrido Enchufable. Potencia: 680 hp. El futuro de la eficiencia y el rendimiento de McLaren.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/2617295716283359482_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/2617295716283359482_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/2617295716283359482_1"
+    }
+  },
+  {
+    id: 49,
+    nombre: "Lexus LFA",
+    descripcion: "Motor: 4.8L V10. Potencia: 560 hp. Famoso por tener uno de los sonidos de motor más bellos del mundo.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/13916122227035385447_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/13916122227035385447_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/13916122227035385447_1"
+    }
+  },
+  {
+    id: 50,
+    nombre: "Ford GT Heritage Edition (2022)",
+    descripcion: "Motor: 3.5L V6 EcoBoost. Potencia: 660 hp. Un tributo a las victorias de Ford en Le Mans.",
+    imagenes: {
+      delantero: "http://googleusercontent.com/image_collection/image_retrieval/14118817087789714041_0",
+      trasero: "http://googleusercontent.com/image_collection/image_retrieval/14118817087789714041_2",
+      interior: "http://googleusercontent.com/image_collection/image_retrieval/14118817087789714041_1"
+    }
+  }
+];
 
-  return listaOficial.map((auto, i) => ({
-    id: i + 1,
-    make: auto.name,
-    year: auto.year, // <--- Aquí se asigna el año real que me pasaste
-    price: Math.floor(Math.random() * (1500000 - 45000) + 45000),
-    description: auto.desc,
-    specs: {
-      motor: auto.engine,
-      hp: auto.hp,
-      torque: auto.torque,
-      topSpeed: auto.topSpeed,
-      tech: auto.tech
-    },
-    images: [
-      `https://picsum.photos/seed/6r7_${i}a/1200/800`,
-      `https://picsum.photos/seed/6r7_${i}b/1200/800`,
-      `https://picsum.photos/seed/6r7_${i}c/1200/800`
-    ],
-    accel: auto.accel,
-    hp: auto.hp
-  }));
-};
+
+export default catálogoAutos;
