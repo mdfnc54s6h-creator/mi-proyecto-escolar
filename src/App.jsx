@@ -7,7 +7,7 @@ function App() {
   const [autoSeleccionado, setAutoSeleccionado] = useState(null);
 
   const abrirWhatsApp = (nombreAuto) => {
-    const mensaje = `Hola, estoy interesado en el ${nombreAuto} que vi en el catálogo.`;
+    const mensaje = `Hola, estoy interesado en el vehiculo que vi en el catálogo.`;
     window.open(`https://wa.me/18493528972?text=${encodeURIComponent(mensaje)}`, '_blank');
   };
 
